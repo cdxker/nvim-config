@@ -13,6 +13,11 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 -- in the form "LspDiagnosticsSignWarning"
 
 require("neo-tree").setup({
+    window = {
+        mappings = {
+            ["w"] = ""
+        }
+    }
 })
 
 vim.keymap.set("n", "<leader>n", ":Neotree toggle<cr>")
