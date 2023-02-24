@@ -17,7 +17,9 @@ vim.keymap.set("n", "<C-k>", "<C-W>k")
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<S-l>", ":cnext<CR>")
+vim.keymap.set("n", "<S-h>", ":cprev<CR>")
+
 
 
 -- Shortcutting split navigation, saving a keypress:

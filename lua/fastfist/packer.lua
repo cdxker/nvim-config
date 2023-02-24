@@ -63,6 +63,20 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+        "jay-babu/mason-null-ls.nvim",
+    }
+
+    use {
+        'APZelos/blamer.nvim',
+    }
+
+    use { "nvim-treesitter/playground" }
+    use("nvim-treesitter/nvim-treesitter-context");
+
+    use 'folke/tokyonight.nvim'
     -- Visual Stuff
     use {
         'lewis6991/gitsigns.nvim',
