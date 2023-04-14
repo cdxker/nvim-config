@@ -75,9 +75,8 @@ require "mason-null-ls".setup({
     automatic_setup = true,
 })
 
-require "null-ls".setup()
+require "null-ls".setup();
 
-require "mason-null-ls".setup_handlers() -- If `automatic_setup` is true.
 
 vim.diagnostic.config({
     virtual_text = true,
