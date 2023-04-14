@@ -136,6 +136,11 @@ _G.packer_plugins = {
     path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox-baby"] = {
+    loaded = true,
+    path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/gruvbox-baby",
+    url = "https://github.com/luisiacc/gruvbox-baby"
+  },
   harpoon = {
     loaded = true,
     path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -236,6 +241,11 @@ _G.packer_plugins = {
     path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -255,6 +265,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/vim-sleuth",
     url = "https://github.com/tpope/vim-sleuth"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/home/fastfist/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

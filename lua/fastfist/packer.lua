@@ -92,4 +92,9 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use 'shaunsingh/nord.nvim'
     use 'Mofiqul/dracula.nvim'
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use {
+        'luisiacc/gruvbox-baby', branch = 'main'
+    }
+    use "folke/zen-mode.nvim"
 end)
