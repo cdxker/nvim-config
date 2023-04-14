@@ -1,5 +1,5 @@
 function color(color)
-    my_color = color or "gruvbox-baby"
+    my_color = color or "nord"
     vim.cmd.colorscheme(my_color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -20,4 +20,4 @@ function color(color)
     }
 end
 
-color()
+color("nord")
