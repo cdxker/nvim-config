@@ -16,6 +16,5 @@ vim.keymap.set("n", "<leader>gg", function()
         end
     }
     require("zen-mode").toggle()
-    color()
 end)
 

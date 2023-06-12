@@ -1,5 +1,5 @@
 function color(color)
-    my_color = color or "nord"
+    my_color = color or "rose-pine"
     vim.cmd.colorscheme(my_color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -13,11 +13,16 @@ function color(color)
     require "lualine".setup {
         -- Disable sections and component separators
         options = {
-            theme = my_color,
+            theme = "gruvbox_dark",
             component_separators = { left = '', right = '' },
             section_separators = { left = '', right = '' },
         },
     }
 end
 
-color("nord")
+require "rose-pine".setup ({
+    variant = "dawn",
+    dark_variant = "moon",
+})
+
+color()

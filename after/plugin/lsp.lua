@@ -22,6 +22,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ["<C-Space>"] = cmp.mapping.complete(),
 })
 
+-- Fix Undefined global 'vim'
+lsp.nvim_workspace()
+
 -- disable completion with tab
 -- this helps with copilot setup
 cmp_mappings['<Tab>'] = nil
@@ -57,14 +60,23 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("x", "<leader>a", vim.lsp.buf.range_code_action, opts)
+    vim.keymap.set("x", "<leader>a", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<leader>crn", function() vim.lsp.buf.rename() end, opts)
 end)
 
 lsp.configure('tailwindcss', {
     filetypes = { "rust", "rs", "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" }
+})
+
+lsp.configure('rust_analyzer', {
+    settings = {
+        ["rust-analyzer"] = {
+            check = {
+                command = "clippy"
+            }
+        },
+    }
 })
 
 lsp.setup()
@@ -75,8 +87,7 @@ require "mason-null-ls".setup({
     automatic_setup = true,
 })
 
-require "null-ls".setup();
-
+require "null-ls".setup()
 
 vim.diagnostic.config({
     virtual_text = true,
