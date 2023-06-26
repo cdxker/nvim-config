@@ -27,4 +27,4 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 vim.opt.signcolumn = "yes"
-vim.opt.bg = "light"
+vim.opt.bg = "dark"
