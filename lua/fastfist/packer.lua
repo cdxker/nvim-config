@@ -64,6 +64,10 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'j-hui/fidget.nvim', tag = 'legacy'
+    }
+
+    use {
         "williamboman/mason.nvim",
         "jose-elias-alvarez/null-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
@@ -97,4 +101,5 @@ return require('packer').startup(function(use)
         'luisiacc/gruvbox-baby', branch = 'main'
     }
     use "folke/zen-mode.nvim"
+
 end)

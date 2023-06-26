@@ -73,13 +73,21 @@ lsp.configure('rust_analyzer', {
     settings = {
         ["rust-analyzer"] = {
             check = {
-                command = "clippy"
+                command = "clippy",
+            },
+            cargo = {
+                extraEnv = {
+                    CC = "gcc-12",
+                    CXX = "g++-12",
+                }
             }
         },
     }
 })
 
 lsp.setup()
+
+require"fidget".setup{}
 
 
 require "mason-null-ls".setup({
