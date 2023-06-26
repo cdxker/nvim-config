@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
         }
     }
 
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
     use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
     use {
@@ -41,6 +42,8 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+    use 'simrat39/rust-tools.nvim'
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -63,9 +66,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        'j-hui/fidget.nvim', tag = 'legacy'
-    }
+    use { 'j-hui/fidget.nvim', branch = 'legacy' }
 
     use {
         "williamboman/mason.nvim",

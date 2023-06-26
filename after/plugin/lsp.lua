@@ -65,10 +65,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 end)
 
-lsp.configure('tailwindcss', {
-    filetypes = { "rust", "rs", "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" }
-})
-
 lsp.configure('rust_analyzer', {
     settings = {
         ["rust-analyzer"] = {
@@ -99,4 +95,28 @@ require "null-ls".setup()
 
 vim.diagnostic.config({
     virtual_text = true,
+})
+
+local rt = require("rust-tools")
+local mason_registry = require("mason-registry")
+
+local codelldb = mason_registry.get_package("codelldb")
+local extension_path = codelldb:get_install_path() .. "/extension/"
+local codelldb_path = extension_path .. "adapter/codelldb"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+
+
+local rust_lsp = lsp.build_options('rust_analyzer', {
+  single_file_support = false,
+  on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, remap = false }
+    vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
+  end
+})
+
+rt.setup({
+    dap = {
+        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+    server = rust_lsp
 })
