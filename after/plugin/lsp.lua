@@ -57,8 +57,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("x", "<leader>a", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
@@ -82,9 +82,6 @@ lsp.configure('rust_analyzer', {
 })
 
 lsp.setup()
-
-require"fidget".setup{}
-
 
 require "mason-null-ls".setup({
     automatic_installation = true,
@@ -111,6 +108,7 @@ local rust_lsp = lsp.build_options('rust_analyzer', {
   on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
+    vim.keymap.set("n", "<leader>t", rt.open_cargo_toml.open_cargo_toml, opts)
   end
 })
 

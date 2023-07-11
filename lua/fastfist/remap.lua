@@ -18,3 +18,4 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 vim.keymap.set("n", "<S-l>", ":cnext<CR>")
 vim.keymap.set("n", "<S-h>", ":cprev<CR>")
+vim.keymap.set("n", "<leader>s", ":PackerSync<CR>")

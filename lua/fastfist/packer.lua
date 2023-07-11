@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
     use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
     use {
@@ -66,7 +66,14 @@ return require('packer').startup(function(use)
         }
     }
 
-    use { 'j-hui/fidget.nvim', branch = 'legacy' }
+    use {
+        "vigoux/notifier.nvim",
+        config = function()
+            require 'notifier'.setup {
+            }
+        end
+    }
+
 
     use {
         "williamboman/mason.nvim",
@@ -83,6 +90,9 @@ return require('packer').startup(function(use)
 
     use 'folke/tokyonight.nvim'
     -- Visual Stuff
+    use {
+        'levouh/tint.nvim'
+    }
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -102,5 +112,4 @@ return require('packer').startup(function(use)
         'luisiacc/gruvbox-baby', branch = 'main'
     }
     use "folke/zen-mode.nvim"
-
 end)
