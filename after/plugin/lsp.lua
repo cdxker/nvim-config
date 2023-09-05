@@ -74,12 +74,6 @@ lsp.configure('rust_analyzer', {
             check = {
                 command = "clippy",
             },
-            cargo = {
-                extraEnv = {
-                    CC = "gcc-12",
-                    CXX = "g++-12",
-                }
-            }
         },
     }
 })

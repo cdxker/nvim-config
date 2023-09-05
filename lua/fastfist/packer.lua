@@ -86,9 +86,8 @@ return require('packer').startup(function(use)
     }
 
     use { "nvim-treesitter/playground" }
-    use("nvim-treesitter/nvim-treesitter-context");
+    use {"nvim-treesitter/nvim-treesitter-context" };
 
-    use 'folke/tokyonight.nvim'
     -- Visual Stuff
     use {
         'levouh/tint.nvim'
@@ -100,6 +99,7 @@ return require('packer').startup(function(use)
         end
     }
     use "lukas-reineke/indent-blankline.nvim"
+    use "folke/zen-mode.nvim"
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -111,5 +111,5 @@ return require('packer').startup(function(use)
     use {
         'luisiacc/gruvbox-baby', branch = 'main'
     }
-    use "folke/zen-mode.nvim"
+    use 'folke/tokyonight.nvim'
 end)
