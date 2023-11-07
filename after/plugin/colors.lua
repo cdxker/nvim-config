@@ -7,15 +7,15 @@ vim.g.nord_uniform_diff_background = true
 vim.g.nord_bold = true
 
 function color(color)
-    my_color = color or "gruvbox-baby"
+    my_color = color or "nord"
     vim.cmd.colorscheme(my_color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
-    require('indent_blankline').setup {
-        char = '┊',
-        show_trailing_blankline_indent = false,
+    require("ibl").setup {
+        indent = { char = '┊', },
+        scope = { enabled = false, },
     }
 end
 
