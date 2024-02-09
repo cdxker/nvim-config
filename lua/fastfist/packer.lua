@@ -33,8 +33,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-
     use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
     use {
         'numToStr/Comment.nvim',
@@ -74,24 +72,13 @@ return require('packer').startup(function(use)
         end
     }
 
-
-    use {
-        "williamboman/mason.nvim",
-        "jose-elias-alvarez/null-ls.nvim",
-        "jay-babu/mason-null-ls.nvim",
-    }
-
     use {
         'APZelos/blamer.nvim',
     }
 
-    use { "nvim-treesitter/playground" }
     use {"nvim-treesitter/nvim-treesitter-context" };
 
     -- Visual Stuff
-    use {
-        'levouh/tint.nvim'
-    }
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -108,8 +95,6 @@ return require('packer').startup(function(use)
     use 'shaunsingh/nord.nvim'
     use 'Mofiqul/dracula.nvim'
     use({ 'rose-pine/neovim', as = 'rose-pine' })
-    use {
-        'luisiacc/gruvbox-baby', branch = 'main'
-    }
+    use { 'luisiacc/gruvbox-baby', branch = 'main' }
     use 'folke/tokyonight.nvim'
 end)

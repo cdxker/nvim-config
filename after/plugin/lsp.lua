@@ -47,13 +47,13 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
-    if client.name == "eslint" then
-        local format = vim.api.nvim_create_augroup("BufWritePost", { clear = true })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            command = "silent! lua vim.lsp.buf.format()",
-            group = format,
-        })
-    end
+    -- if client.name == "eslint" then
+    --     local format = vim.api.nvim_create_augroup("BufWritePost", { clear = true })
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         command = "silent! lua vim.lsp.buf.format()",
+    --         group = format,
+    --     })
+    -- end
 
     vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -79,13 +79,6 @@ lsp.configure('rust_analyzer', {
 })
 
 lsp.setup()
-
-require "mason-null-ls".setup({
-    automatic_installation = true,
-    automatic_setup = true,
-})
-
-require "null-ls".setup()
 
 vim.diagnostic.config({
     virtual_text = true,
