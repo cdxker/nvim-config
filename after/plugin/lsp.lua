@@ -1,3 +1,5 @@
+require"mason".setup()
+
 local lsp = require "lsp-zero".preset({
     name = "minimal",
     set_lsp_keymaps = true,

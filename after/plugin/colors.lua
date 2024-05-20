@@ -7,7 +7,7 @@ vim.g.nord_uniform_diff_background = true
 vim.g.nord_bold = true
 
 function color(color)
-    my_color = color or "gruvbox-baby"
+    my_color = color or "nord"
     vim.cmd.colorscheme(my_color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -20,7 +20,7 @@ function color(color)
 end
 
 require "rose-pine".setup({
-    variant = "dawn",
+    variant = "moon",
     dark_variant = "main",
 })
 
