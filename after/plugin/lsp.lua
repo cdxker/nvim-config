@@ -7,43 +7,26 @@ local lsp = require "lsp-zero".preset({
     suggest_lsp_servers = true,
 })
 
-lsp.ensure_installed({
-    "tsserver",
-    "eslint",
-    "rust_analyzer",
-    "tailwindcss"
-})
-
-
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-e>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-y>'] = cmp.mapping.scroll_docs(4),
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
 })
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings,
-    preselect = cmp.PreselectMode.Item
+cmp.setup({
+    mapping= cmp.mapping.preset.insert({
+        ['<C-e>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-y>'] = cmp.mapping.scroll_docs(4),
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = nil,
+        ['<S-Tab>'] = nil,
+    })
 })
-
 
 lsp.set_preferences({
     suggest_lsp_servers = true,
-    sign_icons = {
-    }
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -65,8 +48,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("x", "<leader>a", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("x", "<leader>a", vim.lsp.buf.range_code_action, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 end)
 
@@ -102,11 +85,4 @@ local rust_lsp = lsp.build_options('rust_analyzer', {
     vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
     vim.keymap.set("n", "<leader>t", rt.open_cargo_toml.open_cargo_toml, opts)
   end
-})
-
-rt.setup({
-    dap = {
-        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-    },
-    server = rust_lsp
 })

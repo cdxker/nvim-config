@@ -7,7 +7,7 @@ vim.g.nord_uniform_diff_background = true
 vim.g.nord_bold = true
 
 function color(color)
-    my_color = color or "nord"
+    my_color = color or "gruvbox-baby"
     vim.cmd.colorscheme(my_color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

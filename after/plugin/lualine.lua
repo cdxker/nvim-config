@@ -47,7 +47,7 @@ local bubbles_theme = {
 
 require('lualine').setup {
   options = {
-    theme = "nord",
+    theme = "dracula",
     icons_enabled = true,
     component_separators = '|',
     section_separators = { left = '', right = '' },
