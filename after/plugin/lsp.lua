@@ -1,4 +1,5 @@
 require"mason".setup()
+require("mason-lspconfig").setup()
 
 local lsp = require "lsp-zero".preset({
     name = "minimal",
@@ -40,6 +41,7 @@ lsp.on_attach(function(client, bufnr)
     --     })
     -- end
 
+
     vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -48,9 +50,9 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("x", "<leader>a", vim.lsp.buf.range_code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 end)
 
 lsp.configure('rust_analyzer', {
@@ -62,6 +64,9 @@ lsp.configure('rust_analyzer', {
         },
     }
 })
+
+lsp.setup_servers({'tsserver', 'pyright'})
+
 
 lsp.setup()
 
