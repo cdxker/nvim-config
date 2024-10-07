@@ -1,6 +1,27 @@
 require"mason".setup()
 require("mason-lspconfig").setup()
 
+vim.filetype.add({
+  extension = {
+    gotmpl = 'gotmpl',
+  },
+  pattern = {
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.ya?ml"] = "helm",
+    ["helmfile.*%.ya?ml"] = "helm",
+  },
+})
+
+vim.filetype.add({
+  extension = {
+    mdx = 'mdx'
+  }
+})
+
+local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+ft_to_parser.mdx = "markdown"
+
+
 local lsp = require "lsp-zero".preset({
     name = "minimal",
     set_lsp_keymaps = true,
@@ -65,7 +86,7 @@ lsp.configure('rust_analyzer', {
     }
 })
 
-lsp.setup_servers({'tsserver', 'pyright'})
+lsp.setup_servers({'rust_analyzer', 'tsserver', 'pyright', 'tailwindcss-language-server', 'gopls'})
 
 
 lsp.setup()
