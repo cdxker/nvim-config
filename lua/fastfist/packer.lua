@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use "b0o/schemastore.nvim"
+
     -- Quick browse
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -21,6 +23,18 @@ return require('packer').startup(function(use)
             'nvim-lua/plenary.nvim',
             'sindrets/diffview.nvim'
         }
+    }
+
+    use {
+        "someone-stole-my-name/yaml-companion.nvim",
+        requires = {
+            { "neovim/nvim-lspconfig" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim" },
+        },
+        config = function()
+            require("telescope").load_extension("yaml_schema")
+        end,
     }
 
     use {
@@ -44,6 +58,7 @@ return require('packer').startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -76,7 +91,7 @@ return require('packer').startup(function(use)
         'APZelos/blamer.nvim',
     }
 
-    use {"nvim-treesitter/nvim-treesitter-context" };
+    use { "nvim-treesitter/nvim-treesitter-context" };
 
     -- Visual Stuff
     use {

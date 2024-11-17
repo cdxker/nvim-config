@@ -38,3 +38,6 @@ require 'treesitter-context'.setup {
     enable = true,
     max_lines = 4, 
 }
+
+local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+ft_to_parser.mdx = "markdown"

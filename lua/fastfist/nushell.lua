@@ -241,9 +241,9 @@ function M.setup()
 		M.run_with_nu()
 	end, {})
 
-	vim.keymap.set("n", "<Leader>;r", M.run_with_nu, { silent = true, desc = "Run with nushell" })
-	vim.keymap.set("n", "<Leader>;z", M.run_with_zsh, { silent = true, desc = "Run with zsh" })
-	vim.keymap.set("n", "<Leader>;a", M.rerun_last_command, { silent = true, desc = "Rerun last command" })
+	vim.keymap.set("n", "<C-n>", M.run_with_nu, { silent = true, desc = "Run with nushell" })
+	vim.keymap.set("n", "<C-s>", M.run_with_zsh, { silent = true, desc = "Run with zsh" })
+	vim.keymap.set("n", "<C-f>", M.rerun_last_command, { silent = true, desc = "Rerun last command" })
 end
 
 return M
