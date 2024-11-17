@@ -1,6 +1,7 @@
 require("fastfist.remap")
 require("fastfist.packer")
 require("fastfist.set")
+require("fastfist.nushell").setup()
 
 local augroup = vim.api.nvim_create_augroup
 
