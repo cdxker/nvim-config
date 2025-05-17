@@ -72,6 +72,7 @@ return require('packer').startup(function(use)
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-cmdline' },
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
@@ -91,9 +92,24 @@ return require('packer').startup(function(use)
         'APZelos/blamer.nvim',
     }
 
-    use { "nvim-treesitter/nvim-treesitter-context" };
+    use {
+        "nvim-treesitter/nvim-treesitter-context",
+        dependencies = {
+            -- Additional Nushell parser
+            { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+        },
+        build = ":TSUpdate",
+    };
 
     -- Visual Stuff
+    use {
+        "OXY2DEV/markview.nvim",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        }
+    }
+
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -112,4 +128,16 @@ return require('packer').startup(function(use)
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use { 'luisiacc/gruvbox-baby', branch = 'main' }
     use 'folke/tokyonight.nvim'
+    use 'Exafunction/codeium.vim'
+
+    use({
+        "olimorris/codecompanion.nvim",
+        config = function()
+            require("codecompanion").setup()
+        end,
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        }
+    })
 end)

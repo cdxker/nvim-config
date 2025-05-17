@@ -1,5 +1,5 @@
 local function attached_clients()
-  local clients = vim.lsp.get_active_clients()
+  local clients = vim.lsp.get_clients()
   if next(clients) == nil then
     return ''
   end
@@ -44,10 +44,12 @@ local bubbles_theme = {
   command = { a = { bg = colors.yellow }, y = { bg = colors.bg0 } },
 }
 
+local theme = "gruvbox"
+
 
 require('lualine').setup {
   options = {
-    theme = "dracula",
+    theme = theme,
     icons_enabled = true,
     component_separators = '|',
     section_separators = { left = '', right = '' },

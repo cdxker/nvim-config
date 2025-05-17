@@ -1,6 +1,6 @@
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "c", "lua", "rust", "typescript", "javascript", "solidity" },
+    ensure_installed = { "c", "lua", "rust", "typescript", "javascript", "solidity", "nu" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -36,7 +36,7 @@ require 'nvim-treesitter.configs'.setup {
 
 require 'treesitter-context'.setup {
     enable = true,
-    max_lines = 4, 
+    max_lines = 4,
 }
 
 local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername

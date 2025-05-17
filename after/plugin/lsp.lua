@@ -49,6 +49,21 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' },
+    }
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'path' },
+        { name = 'cmdline' },
+    }
+})
+
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-e>'] = cmp.mapping.scroll_docs(-4),
@@ -86,6 +101,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("x", "<leader>a", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
@@ -145,7 +161,7 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
-vim.api.nvim_set_keymap('i', '<M-CR>', 'copilot#Accept("<CR>")', { expr=true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<M-CR>', 'codeium#Accept()', { expr=true, noremap = true, silent = true })
 vim.g.copilot_no_tab_map = true
 
 -- local mason_registry = require("mason-registry")
